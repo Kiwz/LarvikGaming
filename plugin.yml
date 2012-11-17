@@ -1,0 +1,65 @@
+name: LarvikGaming
+version: 1.0
+author: Kiwz
+
+main: net.kiwz.larvikgaming.LarvikGaming
+
+loadbefore: [bPermissions, Orebfuscator, WorldBorder]
+
+commands:
+  lgtest:
+  lginfo:
+    description: Prints out information included commands.
+    aliases: [lgi, lg]
+    permission: larvikgaming.info
+    permission-message: You do not have <larvikgaming.info> permission!
+    usage: Syntax error! Simply type /<lg>.
+  lgrestart:
+    description: Restarts the whole server.
+    aliases: [lgrs]
+    permission: larvikgaming.restart
+    permission-message: You do not have <larvikgaming.restart> permission!
+    usage: Syntax error! Simply type /<lgrestart>.
+  lgreload:
+    description: Reloads this plugin.
+    aliases: [lgrl]
+    permission: larvikgaming.reload
+    permission-message: You do not have <larvikgaming.reload> permission!
+    usage: Syntax error! Simply type /<lgreload>.
+  lgcopy:
+    description: Copy the configurated files to FileDir.
+    aliases: [lgc, fc, filecopy]
+    permission: larvikgaming.copy
+    permission-message: You do not have <larvikgaming.copy> permission!
+    usage: Syntax error! Simply type /<lgcopy> to copy files.
+  lggroups:
+    description: Gets groups of players.
+    aliases: [lgg, groups]
+    permission: larvikgaming.groups
+    permission-message: You do not have <larvikgaming.groups> permission!
+    usage: Syntax error! Simply type /<lggroups> to get groups.
+
+permissions:
+  larvikgaming.*:
+    description: Gives access to all LarvikGaming commands.
+    children:
+      larvikgaming.info: true
+      larvikgaming.restart: true
+      larvikgaming.reload: true
+      larvikgaming.copy: true
+      larvikgaming.groups: true
+  larvikgaming.info:
+    description: Prints out information included commands.
+    default: op
+  larvikgaming.restart:
+    description: Restarts the whole server.
+    default: op
+  larvikgaming.reload:
+    description: Reloads this plugin.
+    default: op
+  larvikgaming.copy:
+    description: Copy the configurated files to FileDir.
+    default: op
+  larvikgaming.groups:
+    description: Create a user.txt file that contains groups of players.
+    default: op
