@@ -14,7 +14,6 @@ import net.kiwz.larvikgaming.threads.Threads;
 import net.kiwz.larvikgaming.utils.ConfigHeader;
 import net.kiwz.larvikgaming.utils.MakeFolders;
 import net.kiwz.larvikgaming.utils.OnlinePlayers;
-import net.kiwz.larvikgaming.utils.PluginsList;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
@@ -56,7 +55,6 @@ public class LarvikGaming extends JavaPlugin {
 	    //Next line is for the online players graph
 	    this.getServer().getScheduler().scheduleAsyncRepeatingTask(this, new OnlinePlayers(), 200, 200);
 	    
-	    PluginsList.build();
 	    abm = Threads.threadABM();
 	    fc = Threads.threadFC();
 	    pg = Threads.threadPG();
