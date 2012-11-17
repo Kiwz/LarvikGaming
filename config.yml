@@ -1,51 +1,28 @@
 autoMsgDelayInMin: 15
 autoMsgToConsole: false
 autoMsgPrefix: '&d[Viktig Beskjed] '
-RestartTimeInHours: 6
+RestartTimeInHours: 0
 FileDir: plugins/LarvikGaming/files
 PluginsList: true
 FileCopyDelayInMin: 10
 LogFileCopyTime: false
 FilesToCopy:
-- plugins/AdminCmd/banned.yml
-- plugins/NoCheatPlus/nocheatplus.log
-- plugins/ChestShop/ChestShop.log
-- plugins/Towny/logs/towny.log
-- plugins/Towny/logs/money.csv
 - server.log
 FilesToSave:
-- bans.txt
-- nocheatplus.txt
-- chestshop.txt
-- town-nation.txt
-- towny-money.txt
 - server.txt
 LogGetGroupTime: false
-RefreshGroupInMin: 10
+RefreshGroupInMin: 0
 WorldToGetGroupFrom: world
 Groups:
-- arkitekt
-- offiser
-- hjelper
-- builder
+- owner
+- admin
+- mod
+- vip
 TimeFormat: yyyy-MM-dd HH:mm:ss
 CmdToLog1:
 - /town add *
-- /town kick *
-- /town assistant *
-- /t add *
-- /t kick *
-- /t assistant *
 CmdToLog2:
 - /money pay *
-- /town deposit *
-- /town withdraw *
-- /t deposit *
-- /t withdraw *
-- /nation deposit *
-- /nation withdraw *
-- /n deposit *
-- /n withdraw *
 PrivMsgToLog:
 - /message
 - /msg

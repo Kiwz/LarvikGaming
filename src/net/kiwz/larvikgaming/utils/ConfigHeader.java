@@ -24,7 +24,7 @@ public class ConfigHeader {
 		String s16 = "LogFileCopyTime = If 'true' it will log the time it takes to copy each file in 'FilesToCopy'." + n;
 		String s17 = "FilesToCopy = A list of all the files you want to copy, remember to format the list the same way as the default list." + n;
 		String s18 = "FilesToSave = A list containing the new name of the copyed files, remember that the order is important." + n;
-		String s19 = "LogGetGroupTime = If 'true' it will log the time it takes to generate the 'users.txt' file." + n;
+		String s19 = "LogGetGroupTime = If 'true' it will log the time it takes to generate the 'users.txt' file from bPermissions." + n;
 		String s20 = "RefreshGroupInMin = How many minutes between each time the 'users.txt' file will be uppdated.  0 to disable this feature. Set to 0 if you do not have bPermissions!" + n;
 		String s21 = "WorldToGetGroupFrom = I am sorry to tell that this is not a multiworld plugin, so choose what world you want to get groups from." + n;
 		String s22 = "Groups = A list of what groups you care about." + n;

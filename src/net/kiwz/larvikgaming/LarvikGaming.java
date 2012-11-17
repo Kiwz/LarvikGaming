@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 
 import net.kiwz.larvikgaming.listeners.ChatListener;
 import net.kiwz.larvikgaming.listeners.CommandListener;
+import net.kiwz.larvikgaming.listeners.LoginListener;
 import net.kiwz.larvikgaming.logs.LogHandlers;
 import net.kiwz.larvikgaming.threads.RunAM;
 import net.kiwz.larvikgaming.threads.RunFC;
@@ -45,11 +46,13 @@ public class LarvikGaming extends JavaPlugin {
 		getCommand("lgrestart").setExecutor(cmds);
 	    getCommand("lgcopy").setExecutor(cmds);
 	    getCommand("lggroups").setExecutor(cmds);
-	    //getCommand("lgtest").setExecutor(cmds);
+	    getCommand("lgtest").setExecutor(cmds);
 	    ChatListener chat = new ChatListener();
 	    pm.registerEvents(chat, this);
 	    CommandListener cmd = new CommandListener();
 	    pm.registerEvents(cmd, this);
+	    LoginListener ll = new LoginListener();
+	    pm.registerEvents(ll, this);
 	    //Next line is for the online players graph
 	    this.getServer().getScheduler().scheduleAsyncRepeatingTask(this, new OnlinePlayers(), 200, 200);
 	    

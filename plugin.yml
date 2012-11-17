@@ -43,6 +43,7 @@ permissions:
   larvikgaming.*:
     description: Gives access to all LarvikGaming commands.
     children:
+      larvikgaming.test: true
       larvikgaming.info: true
       larvikgaming.restart: true
       larvikgaming.reload: true

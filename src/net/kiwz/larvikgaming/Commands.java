@@ -81,17 +81,16 @@ public class Commands implements CommandExecutor {
 			return true;
 		}
 		
-		/*if (cmd.getName().equalsIgnoreCase("lgtest")) {
+		if (cmd.getName().equalsIgnoreCase("lgtest") && sender.hasPermission("larvikgaming.test")) {
 			long start = System.currentTimeMillis();
-			List<World> worlds = Bukkit.getServer().getWorlds();
-			for (World world : worlds) {
-				world.save();
-				sender.sendMessage(world.getName() + " is saved!");
-			}
-			sender.sendMessage("" + (System.currentTimeMillis() - start));
-			sender.sendMessage("Dette er 'test' kommandoen til larvikgaming!");
+			
+			// All testing stuff goes in here:
+			
+			// All testing stuff ends here!
+			
+			sender.sendMessage("Dette er 'test' kommandoen til larvikgaming! " + (System.currentTimeMillis() - start));
 			return true;
-		}*/
+		}
 		return false;
 	}
 }
