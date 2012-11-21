@@ -1,4 +1,4 @@
-package net.kiwz.larvikgaming.threads;
+package net.kiwz.larvikgaming.runnables;
 
 import net.kiwz.larvikgaming.utils.StopServer;
 
@@ -8,7 +8,7 @@ import org.bukkit.Server;
 import org.bukkit.plugin.Plugin;
 
 
-public class RunSS implements Runnable {
+public class RunStopServer implements Runnable {
 	
 	private boolean go = true;
 	

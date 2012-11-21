@@ -25,7 +25,7 @@ public class PlayerGroups {
 		String fileDest = larvikGaming.getConfig().getString("FileDir", "plugins/LarvikGaming/files") + "/";
 		String miscFolder = fileDest + "misc/";
 		File origUsers = new File(fileSrc + "users.yml");
-		File destUsers = new File(miscFolder + "users.txt");
+		File destUsers = new File(miscFolder + "perm_groups.txt");
 		boolean logTime = larvikGaming.getConfig().getBoolean("LogGetGroupTime", false);
 		long start = System.currentTimeMillis();
 		long time = 0;

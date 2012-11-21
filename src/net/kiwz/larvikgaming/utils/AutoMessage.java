@@ -13,7 +13,7 @@ public class AutoMessage {
 	public static File message;
 	public static Vector<String> messageList = new Vector<String>();
 	
-	public static void makeMessageABFile() {
+	public static void makeMessageFile() {
 		message = new File("plugins/LarvikGaming/Messages.txt");
 		if (!message.exists())
 	    	try {

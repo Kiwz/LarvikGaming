@@ -1,12 +1,12 @@
-package net.kiwz.larvikgaming.threads;
+package net.kiwz.larvikgaming.runnables;
 
-import net.kiwz.larvikgaming.utils.FileCopy;
+import net.kiwz.larvikgaming.utils.PlayerGroups;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
 
-public class RunFC implements Runnable {
+public class RunPlayerGroups implements Runnable {
 	
 	private boolean go = true;
 	
@@ -16,13 +16,13 @@ public class RunFC implements Runnable {
 
 	public void run() {
 		Plugin larvikGaming = Bukkit.getServer().getPluginManager().getPlugin("LarvikGaming");
-		int delay = larvikGaming.getConfig().getInt("FileCopyDelayInMin", 10) * 60000;
+		int delay = larvikGaming.getConfig().getInt("RefreshGroupInMin", 10) * 60000;
 		long runTime = 0;
     	if (delay < 1) {
     		return;
     	}
     	try {
-			Thread.sleep(400);
+			Thread.sleep(100);
 		}
     	catch (InterruptedException e) {
 		}
@@ -34,8 +34,8 @@ public class RunFC implements Runnable {
 			}
     		if (go) {
     			long startTime = System.currentTimeMillis();
-    			FileCopy.fileCopy();
-    			runTime = System.currentTimeMillis() - startTime;
+    	    	PlayerGroups.refreshGroups();
+    	    	runTime = System.currentTimeMillis() - startTime;
     		}
 	    }
 	}

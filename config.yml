@@ -1,15 +1,10 @@
+TeleportCharge: 30
 autoMsgDelayInMin: 15
 autoMsgToConsole: false
 autoMsgPrefix: '&d[Viktig Beskjed] '
-RestartTimeInHours: 0
+RestartTimeInHours: 6
 FileDir: plugins/LarvikGaming/files
-PluginsList: true
-FileCopyDelayInMin: 10
-LogFileCopyTime: false
-FilesToCopy:
-- server.log
-FilesToSave:
-- server.txt
+TimeBetweenOnlinePlayersLog: 15
 LogGetGroupTime: false
 RefreshGroupInMin: 0
 WorldToGetGroupFrom: world
@@ -19,10 +14,8 @@ Groups:
 - mod
 - vip
 TimeFormat: yyyy-MM-dd HH:mm:ss
-CmdToLog1:
+CmdToLog:
 - /town add *
-CmdToLog2:
-- /money pay *
 PrivMsgToLog:
 - /message
 - /msg

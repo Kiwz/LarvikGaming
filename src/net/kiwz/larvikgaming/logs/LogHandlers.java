@@ -15,18 +15,41 @@ public class LogHandlers {
 	private static Logger log = Logger.getLogger("Minecraft");
 	private static Logger global = Logger.getLogger("");
 	private static Plugin larvikGaming = Bukkit.getServer().getPluginManager().getPlugin("LarvikGaming");
+	private static String folderToSave = larvikGaming.getConfig().getString("FileDir", "plugins/LarvikGaming/files") + "/";
+	private static String logFolder = folderToSave + "logs/";
+	private static String log_file = logFolder + "log.txt";
+	private static String fine_file = logFolder + "fine_log.txt";
+	private static String info_file = logFolder + "info_log.txt";
+	private static String warning_file = logFolder + "warning_log.txt";
+	private static String severe_file = logFolder + "severe_log.txt";
 
 	public static void log() {
-		String folderToSave = larvikGaming.getConfig().getString("FileDir", "plugins/LarvikGaming/files") + "/";
-		String logFolder = folderToSave + "logs/";
 		boolean full = larvikGaming.getConfig().getBoolean("Full-Logger", true);
 		boolean fine = larvikGaming.getConfig().getBoolean("Fine-Logger", false);
 		boolean info = larvikGaming.getConfig().getBoolean("Info-Logger", false);
 		boolean warning = larvikGaming.getConfig().getBoolean("Warning-Logger", true);
 		boolean severe = larvikGaming.getConfig().getBoolean("Severe-Logger", true);
-		if ((new File(logFolder + "Full-Logger.txt.lck")).exists()) {
-			return;
+		File log_lck = new File(log_file + ".lck");
+		File fine_lck = new File(fine_file + ".lck");
+		File info_lck = new File(info_file + ".lck");
+		File warning_lck = new File(warning_file + ".lck");
+		File severe_lck = new File(severe_file + ".lck");
+		if (log_lck.exists()) {
+			log_lck.delete();
 		}
+		if (fine_lck.exists()) {
+			fine_lck.delete();
+		}
+		if (info_lck.exists()) {
+			info_lck.delete();
+		}
+		if (warning_lck.exists()) {
+			warning_lck.delete();
+		}
+		if (severe_lck.exists()) {
+			severe_lck.delete();
+		}
+		
 		log.setLevel(Level.ALL);
 		Handler[] mcHandler = log.getHandlers();
 		mcHandler[1].setLevel(Level.INFO);
@@ -43,11 +66,9 @@ public class LogHandlers {
 	}
 	
 	private static void full() {
-		String folderToSave = larvikGaming.getConfig().getString("FileDir", "plugins/LarvikGaming/files") + "/";
-		String logFolder = folderToSave + "logs/";
 		FileHandler fullHandler = null;
 		try {
-			fullHandler = new FileHandler(logFolder + "Full-Logger.txt", true);
+			fullHandler = new FileHandler(log_file, true);
 		} catch (IOException e) {
 		}
 		log.addHandler(fullHandler);
@@ -57,11 +78,9 @@ public class LogHandlers {
 	}
 	
 	private static void fine() {
-		String folderToSave = larvikGaming.getConfig().getString("FileDir", "plugins/LarvikGaming/files") + "/";
-		String logFolder = folderToSave + "logs/";
 		FileHandler fineHandler = null;
 		try {
-			fineHandler = new FileHandler(logFolder + "Fine-Logger.txt", true);
+			fineHandler = new FileHandler(fine_file, true);
 		} catch (IOException e) {
 		}
 		log.addHandler(fineHandler);
@@ -71,11 +90,9 @@ public class LogHandlers {
 	}
 	
 	private static void info() {
-		String folderToSave = larvikGaming.getConfig().getString("FileDir", "plugins/LarvikGaming/files") + "/";
-		String logFolder = folderToSave + "logs/";
 		FileHandler infoHandler = null;
 		try {
-			infoHandler = new FileHandler(logFolder + "Info-Logger.txt", true);
+			infoHandler = new FileHandler(info_file, true);
 		} catch (IOException e) {
 		}
 		log.addHandler(infoHandler);
@@ -85,11 +102,9 @@ public class LogHandlers {
 	}
 	
 	private static void warning() {
-		String folderToSave = larvikGaming.getConfig().getString("FileDir", "plugins/LarvikGaming/files") + "/";
-		String logFolder = folderToSave + "logs/";
 		FileHandler warningHandler = null;
 		try {
-			warningHandler = new FileHandler(logFolder + "Warning-Logger.txt", true);
+			warningHandler = new FileHandler(warning_file, true);
 		} catch (IOException e) {
 		}
 		log.addHandler(warningHandler);
@@ -99,11 +114,9 @@ public class LogHandlers {
 	}
 	
 	private static void severe() {
-		String folderToSave = larvikGaming.getConfig().getString("FileDir", "plugins/LarvikGaming/files") + "/";
-		String logFolder = folderToSave + "logs/";
 		FileHandler severeHandler = null;
 		try {
-			severeHandler = new FileHandler(logFolder + "Severe-Logger.txt", true);
+			severeHandler = new FileHandler(severe_file, true);
 		} catch (IOException e) {
 		}
 		log.addHandler(severeHandler);

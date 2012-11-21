@@ -1,4 +1,4 @@
-package net.kiwz.larvikgaming.threads;
+package net.kiwz.larvikgaming.runnables;
 
 import net.kiwz.larvikgaming.utils.AutoMessage;
 
@@ -10,7 +10,7 @@ import org.bukkit.plugin.Plugin;
 
 
 
-public class RunAM implements Runnable {
+public class RunAutoMessage implements Runnable {
 	
 	private boolean go = true;
 	
@@ -30,7 +30,7 @@ public class RunAM implements Runnable {
 		String mPre = larvikGaming.getConfig().getString("autoMsgPrefix", "'&d[Viktig Beskjed] '");
 		int line = 0;
 		long runTime = 0;
-		AutoMessage.makeMessageABFile();
+		AutoMessage.makeMessageFile();
 		int messages = AutoMessage.messageList.size();
 		if (messages == 0) {
 			return;

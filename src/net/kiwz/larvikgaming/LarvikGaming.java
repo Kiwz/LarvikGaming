@@ -6,15 +6,13 @@ import net.kiwz.larvikgaming.listeners.ChatListener;
 import net.kiwz.larvikgaming.listeners.CommandListener;
 import net.kiwz.larvikgaming.listeners.LoginListener;
 import net.kiwz.larvikgaming.logs.LogHandlers;
-import net.kiwz.larvikgaming.threads.RunAM;
-import net.kiwz.larvikgaming.threads.RunFC;
-import net.kiwz.larvikgaming.threads.RunPG;
-import net.kiwz.larvikgaming.threads.RunSS;
-import net.kiwz.larvikgaming.threads.Threads;
+import net.kiwz.larvikgaming.runnables.RunAutoMessage;
+import net.kiwz.larvikgaming.runnables.RunOnlinePlayers;
+import net.kiwz.larvikgaming.runnables.RunPlayerGroups;
+import net.kiwz.larvikgaming.runnables.RunStopServer;
+import net.kiwz.larvikgaming.runnables.Threads;
 import net.kiwz.larvikgaming.utils.ConfigHeader;
 import net.kiwz.larvikgaming.utils.MakeFolders;
-import net.kiwz.larvikgaming.utils.OnlinePlayers;
-
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -23,12 +21,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class LarvikGaming extends JavaPlugin {
 
 	public static String name = "[LarvikGaming] ";
+	public static long start = System.currentTimeMillis();
 	private Logger log = Logger.getLogger("Minecraft");
 	private PluginManager pm = Bukkit.getServer().getPluginManager();
-	private RunAM abm;
-	private RunFC fc;
-	private RunPG pg;
-	private RunSS ss;
+	private RunAutoMessage abm;
+	private RunOnlinePlayers op;
+	private RunPlayerGroups pg;
+	private RunStopServer ss;
 	
 	public void onLoad() {
 		this.getConfig().options().copyDefaults(true);
@@ -43,8 +42,8 @@ public class LarvikGaming extends JavaPlugin {
 		getCommand("lginfo").setExecutor(cmds);
 		getCommand("lgreload").setExecutor(cmds);
 		getCommand("lgrestart").setExecutor(cmds);
-	    getCommand("lgcopy").setExecutor(cmds);
 	    getCommand("lggroups").setExecutor(cmds);
+	    getCommand("restart").setExecutor(cmds);
 	    getCommand("lgtest").setExecutor(cmds);
 	    ChatListener chat = new ChatListener();
 	    pm.registerEvents(chat, this);
@@ -52,22 +51,20 @@ public class LarvikGaming extends JavaPlugin {
 	    pm.registerEvents(cmd, this);
 	    LoginListener ll = new LoginListener();
 	    pm.registerEvents(ll, this);
-	    //Next line is for the online players graph
-	    this.getServer().getScheduler().scheduleAsyncRepeatingTask(this, new OnlinePlayers(), 200, 200);
 	    
 	    abm = Threads.threadABM();
-	    fc = Threads.threadFC();
+	    op = Threads.threadOP();
 	    pg = Threads.threadPG();
 	    ss = Threads.threadSS();
 		log.info(name + "ENABLED!");
 	}
 
-	public void onDisable() {
+	public void onDisable() {		
 		if (abm != null) {
 			abm.setGo(false);
 		}
-		if (fc != null) {
-			fc.setGo(false);
+		if (op != null) {
+			op.setGo(false);
 		}
 		if (pg != null) {
 			pg.setGo(false);

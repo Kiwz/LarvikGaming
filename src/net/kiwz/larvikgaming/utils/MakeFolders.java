@@ -16,10 +16,6 @@ public class MakeFolders {
 		String logFolder = folderToSave + "logs/";
 		File logDir = new File(file.getParentFile(), logFolder);
 		logDir.mkdirs();
-
-		String bckFolder = folderToSave + "backupp/";
-		File bckDir = new File(file.getParentFile(), bckFolder);
-		bckDir.mkdirs();
 		
 		String miscFolder = folderToSave + "misc/";
 		File miscDir = new File(file.getParentFile(), miscFolder);

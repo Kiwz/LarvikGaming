@@ -4,7 +4,7 @@ author: Kiwz
 
 main: net.kiwz.larvikgaming.LarvikGaming
 
-loadbefore: [bPermissions, Orebfuscator, WorldBorder]
+loadbefore: [NoCheatPlus, WorldEdit, Multiverse-Core, Vault, AdminCmd, Craftconomy3, bPermissions, Orebfuscator, WorldBorder]
 
 commands:
   lgtest:
@@ -26,18 +26,18 @@ commands:
     permission: larvikgaming.reload
     permission-message: You do not have <larvikgaming.reload> permission!
     usage: Syntax error! Simply type /<lgreload>.
-  lgcopy:
-    description: Copy the configurated files to FileDir.
-    aliases: [lgc, fc, filecopy]
-    permission: larvikgaming.copy
-    permission-message: You do not have <larvikgaming.copy> permission!
-    usage: Syntax error! Simply type /<lgcopy> to copy files.
   lggroups:
     description: Gets groups of players.
     aliases: [lgg, groups]
     permission: larvikgaming.groups
     permission-message: You do not have <larvikgaming.groups> permission!
     usage: Syntax error! Simply type /<lggroups> to get groups.
+  restart:
+    description: Gives information about time untill next restart.
+    aliases: [rs]
+    permission: 
+    permission-message: 
+    usage: Syntax error! Simply type /<restart> to get time untill next restart.
 
 permissions:
   larvikgaming.*:
@@ -47,8 +47,8 @@ permissions:
       larvikgaming.info: true
       larvikgaming.restart: true
       larvikgaming.reload: true
-      larvikgaming.copy: true
       larvikgaming.groups: true
+      larvikgaming.freetp: true
   larvikgaming.info:
     description: Prints out information included commands.
     default: op
@@ -58,9 +58,9 @@ permissions:
   larvikgaming.reload:
     description: Reloads this plugin.
     default: op
-  larvikgaming.copy:
-    description: Copy the configurated files to FileDir.
-    default: op
   larvikgaming.groups:
     description: Create a user.txt file that contains groups of players.
+    default: op
+  larvikgaming.freetp:
+    description: You will not be charged for using /tp commando.
     default: op

@@ -6,21 +6,17 @@ import java.io.IOException;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
-public class OnlinePlayers implements Runnable {
-	
-	public void run() {
-		makeFile();
-	}
-	
+public class OnlinePlayers {
 	public void makeFile() {
 		Plugin larvikGaming = Bukkit.getServer().getPluginManager().getPlugin("LarvikGaming");
 		String dir = larvikGaming.getConfig().getString("FileDir", "plugins/LarvikGaming/files") + "/misc/";
 		Format  sdf = new SimpleDateFormat(larvikGaming.getConfig().getString("TimeFormat", "yyyy-MM-dd HH:mm:ss"));
 		String date = sdf.format(new Date());
-		File outFile = new File(dir + "Players.txt");
+		File outFile = new File(dir + "player_traffic.txt");
 		FileWriter pw = null;
 		try {
 			pw = new FileWriter(outFile, true);

@@ -19,7 +19,7 @@ public class ChatLogger {
 		}
 		String fileDest = larvikGaming.getConfig().getString("FileDir", "plugins/LarvikGaming/files") + "/";
 		String logFolder = fileDest + "logs/";
-		String chat = logFolder + "Chat.txt";
+		String chat = logFolder + "chat_log.txt";
 		Format sdf = new SimpleDateFormat(larvikGaming.getConfig().getString("TimeFormat", "yyyy-MM-dd HH:mm:ss"));
 		Date date = new Date();
 		String time = sdf.format(date);
