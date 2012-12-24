@@ -27,7 +27,6 @@ public class PlayerGroups {
 		File origUsers = new File(fileSrc + "users.yml");
 		File destUsers = new File(miscFolder + "perm_groups.txt");
 		boolean logTime = larvikGaming.getConfig().getBoolean("LogGetGroupTime", false);
-		long start = System.currentTimeMillis();
 		long time = 0;
 		List<String> groups = larvikGaming.getConfig().getStringList("Groups");
 		String cmdSender = "";
@@ -62,10 +61,6 @@ public class PlayerGroups {
 					inException = true;
 				}
 			}
-			printStream.println("-----------------------------------------------");
-			time = System.currentTimeMillis() - start;
-			printStream.println("Time used to generate this information: " + time + "ms.");
-			printStream.println("-----------------------------------------------");
 			printStream.close();
 		}
 		catch (FileNotFoundException e) {

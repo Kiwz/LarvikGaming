@@ -49,6 +49,7 @@ permissions:
       larvikgaming.reload: true
       larvikgaming.groups: true
       larvikgaming.freetp: true
+      larvikgaming.tab.*: true
   larvikgaming.info:
     description: Prints out information included commands.
     default: op
@@ -63,4 +64,7 @@ permissions:
     default: op
   larvikgaming.freetp:
     description: You will not be charged for using /tp commando.
+    default: op
+  larvikgaming.tab.*:
+    description: You will get a color in the tablist (* = red).
     default: op
