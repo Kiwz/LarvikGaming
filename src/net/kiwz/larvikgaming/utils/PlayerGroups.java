@@ -18,7 +18,8 @@ public class PlayerGroups {
 	String Group;
 	String Name;
 
-	public static String refreshGroups() {
+	public String refreshGroups() {
+		long startTime = System.currentTimeMillis();
 		Logger log = Logger.getLogger("Minecraft");
 		Plugin larvikGaming = Bukkit.getServer().getPluginManager().getPlugin("LarvikGaming");
 		String fileSrc = "plugins/bPermissions/" + larvikGaming.getConfig().getString("WorldToGetGroupFrom", "world") + "/";
@@ -27,7 +28,6 @@ public class PlayerGroups {
 		File origUsers = new File(fileSrc + "users.yml");
 		File destUsers = new File(miscFolder + "perm_groups.txt");
 		boolean logTime = larvikGaming.getConfig().getBoolean("LogGetGroupTime", false);
-		long time = 0;
 		List<String> groups = larvikGaming.getConfig().getStringList("Groups");
 		String cmdSender = "";
 		boolean outException = false;
@@ -76,9 +76,10 @@ public class PlayerGroups {
 			log.warning(LarvikGaming.name + "FileDir: " + miscFolder + " do not excist!");
 		}
 		else {
-			cmdSender = ("Time used to generate this information: " + time + "ms.");
+			long endTime = System.currentTimeMillis() - startTime;
+			cmdSender = ("Time used to generate this information: " + endTime + "ms.");
 			if (logTime) {
-				log.info(LarvikGaming.name + "Time used to generate users.txt: " + time + "ms.");
+				log.info(LarvikGaming.name + "Time used to generate perm_groups.txt: " + endTime + "ms.");
 			}
 		}
 		return cmdSender;

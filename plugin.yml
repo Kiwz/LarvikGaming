@@ -20,12 +20,6 @@ commands:
     permission: larvikgaming.restart
     permission-message: You do not have <larvikgaming.restart> permission!
     usage: Syntax error! Simply type /<lgrestart>.
-  lgreload:
-    description: Reloads this plugin.
-    aliases: [lgrl]
-    permission: larvikgaming.reload
-    permission-message: You do not have <larvikgaming.reload> permission!
-    usage: Syntax error! Simply type /<lgreload>.
   lggroups:
     description: Gets groups of players.
     aliases: [lgg, groups]
@@ -46,7 +40,6 @@ permissions:
       larvikgaming.test: true
       larvikgaming.info: true
       larvikgaming.restart: true
-      larvikgaming.reload: true
       larvikgaming.groups: true
       larvikgaming.freetp: true
       larvikgaming.tab.*: true
@@ -55,9 +48,6 @@ permissions:
     default: op
   larvikgaming.restart:
     description: Restarts the whole server.
-    default: op
-  larvikgaming.reload:
-    description: Reloads this plugin.
     default: op
   larvikgaming.groups:
     description: Create a user.txt file that contains groups of players.

@@ -6,11 +6,11 @@ import org.bukkit.entity.Player;
 
 public class StopServer {
 	
-	public static void stopServer() {
+	public void stopServer() {
 		Server server = Bukkit.getServer();
 		Player[] players = server.getOnlinePlayers();
 		for (Player player : players) {
-			player.kickPlayer("Dont worry! It is just a restart. Come back in a few minutes");
+			player.kickPlayer("Dont worry! It's just a restart. Come back in a few minutes");
 		}
 		server.shutdown();
 	}

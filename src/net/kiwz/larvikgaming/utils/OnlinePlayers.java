@@ -11,6 +11,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
 public class OnlinePlayers {
+	
 	public void makeFile() {
 		Plugin larvikGaming = Bukkit.getServer().getPluginManager().getPlugin("LarvikGaming");
 		String dir = larvikGaming.getConfig().getString("FileDir", "plugins/LarvikGaming/files") + "/misc/";

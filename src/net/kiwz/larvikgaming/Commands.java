@@ -2,6 +2,7 @@ package net.kiwz.larvikgaming;
 
 import net.kiwz.larvikgaming.utils.PlayerGroups;
 import net.kiwz.larvikgaming.utils.StopServer;
+import net.milkbowl.vault.economy.Economy;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -28,33 +29,21 @@ public class Commands implements CommandExecutor {
 			sender.sendMessage(color + "</lginfo> Shows this information.");
 			sender.sendMessage(color + "</help larvikgaming> Show the help entries.");
 			sender.sendMessage(color + "</lgrestart> Will stop the server!");
-			sender.sendMessage(color + "</lgreload> Reloads this plugin.");
 			sender.sendMessage(color + "</lggroups> Create a user.txt file that contains groups of players.");
 			sender.sendMessage(color + "</restart> Gives information about time untill next restart.");
 			return true;
 		}
 		
-		if (cmd.getName().equalsIgnoreCase("lgreload") && sender.hasPermission("larvikgaming.reload")) {
-			Bukkit.getPluginManager().disablePlugin(larvikGaming);
-			larvikGaming.reloadConfig();
-			Bukkit.getPluginManager().enablePlugin(larvikGaming);
-			if (sender instanceof Player) {
-				sender.sendMessage(color + "The LarivkGaming plugin is reloaded!");
-			}
-			else {
-				sender.sendMessage(LarvikGaming.name + color + "Plugin is reloaded!");
-			}
-			return true;
-		}
-		
 		if (cmd.getName().equalsIgnoreCase("lgrestart") && sender.hasPermission("larvikgaming.restart")) {
-			StopServer.stopServer();
+			StopServer ss = new StopServer();
+			ss.stopServer();
 			return true;
 		}
 		
 		if (cmd.getName().equalsIgnoreCase("lggroups") && sender.hasPermission("larvikgaming.groups")) {
 			String message = "";
-			message = PlayerGroups.refreshGroups();
+			PlayerGroups pg = new PlayerGroups();
+			message = pg.refreshGroups();
 			if (sender instanceof Player) {
 				sender.sendMessage(color + message);
 			}
@@ -81,7 +70,11 @@ public class Commands implements CommandExecutor {
 			long start = System.currentTimeMillis();
 			
 			// All testing stuff goes in here:
-
+			
+			Economy econ = Bukkit.getServer().getServicesManager().getRegistration(Economy.class).getProvider();
+			econ.deleteBank("Tredep");
+			
+			
 			// All testing stuff ends here!
 			
 			sender.sendMessage("Dette er 'test' kommandoen til larvikgaming! " + (System.currentTimeMillis() - start));
