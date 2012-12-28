@@ -6,8 +6,6 @@ import net.kiwz.larvikgaming.listeners.ChatListener;
 import net.kiwz.larvikgaming.listeners.CommandListener;
 import net.kiwz.larvikgaming.listeners.LoginListener;
 import net.kiwz.larvikgaming.logs.LogHandlers;
-import net.kiwz.larvikgaming.runnables.RunAutoMessage;
-import net.kiwz.larvikgaming.runnables.Threads;
 import net.kiwz.larvikgaming.tasks.Schedules;
 import net.kiwz.larvikgaming.utils.ConfigHeader;
 import net.kiwz.larvikgaming.utils.MakeFolders;
@@ -19,10 +17,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class LarvikGaming extends JavaPlugin {
 
 	public static String name = "[LarvikGaming] ";
-	public static long start = System.currentTimeMillis();
+	public static long start = 0;
 	private Logger log = Logger.getLogger("Minecraft");
 	private PluginManager pm = Bukkit.getServer().getPluginManager();
-	private RunAutoMessage abm;
 	
 	public void onLoad() {
 		this.getConfig().options().copyDefaults(true);
@@ -50,23 +47,12 @@ public class LarvikGaming extends JavaPlugin {
 	    pm.registerEvents(ll, this);
 	    
 	    Schedules sche = new Schedules();
-	    sche.PlayerGroups();
-	    sche.OnlinePlayersLog();
-	    sche.StopServer();
-	    sche.StopServerMessage();
+	    sche.allSchedules();
 	    
-	    //////////////
-	    abm = Threads.threadABM();
-	    ///////////////
 		log.info(name + "ENABLED!");
 	}
 
 	public void onDisable() {
-		////////////
-		if (abm != null) {
-			abm.setGo(false);
-		}
-		///////////////
 		log.info(name + "DISABLED!");
 	}
 }

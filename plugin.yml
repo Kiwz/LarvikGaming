@@ -8,30 +8,31 @@ loadbefore: [NoCheatPlus, WorldEdit, Multiverse-Core, Vault, AdminCmd, Craftcono
 
 commands:
   lgtest:
+    permission: larvikgaming.test
   lginfo:
     description: Prints out information included commands.
     aliases: [lgi, lg]
     permission: larvikgaming.info
     permission-message: You do not have <larvikgaming.info> permission!
     usage: Syntax error! Simply type /<lg>.
-  lgrestart:
-    description: Restarts the whole server.
-    aliases: [lgrs]
-    permission: larvikgaming.restart
-    permission-message: You do not have <larvikgaming.restart> permission!
-    usage: Syntax error! Simply type /<lgrestart>.
+  lgstop:
+    description: Stops the whole server with a kick message.
+    aliases: [lgs]
+    permission: larvikgaming.stop
+    permission-message: You do not have <larvikgaming.stop> permission!
+    usage: Syntax error! Simply type /<lgstop>.
   lggroups:
     description: Gets groups of players.
     aliases: [lgg, groups]
     permission: larvikgaming.groups
     permission-message: You do not have <larvikgaming.groups> permission!
     usage: Syntax error! Simply type /<lggroups> to get groups.
-  restart:
+  lgrestart:
     description: Gives information about time untill next restart.
-    aliases: [rs]
-    permission: 
-    permission-message: 
-    usage: Syntax error! Simply type /<restart> to get time untill next restart.
+    aliases: [rs, restart]
+    permission: larvikgaming.restart
+    permission-message: You do not have <larvikgaming.restart> permission!
+    usage: Syntax error! Simply type /<lgrestart> to get time untill next restart.
 
 permissions:
   larvikgaming.*:
@@ -39,19 +40,25 @@ permissions:
     children:
       larvikgaming.test: true
       larvikgaming.info: true
-      larvikgaming.restart: true
+      larvikgaming.stop: true
       larvikgaming.groups: true
+      larvikgaming.restart: true
       larvikgaming.freetp: true
       larvikgaming.tab.*: true
+  larvikgaming.test:
+    default: op
   larvikgaming.info:
     description: Prints out information included commands.
     default: op
-  larvikgaming.restart:
-    description: Restarts the whole server.
+  larvikgaming.stop:
+    description: Stops the whole server with a kick message.
     default: op
   larvikgaming.groups:
     description: Create a user.txt file that contains groups of players.
     default: op
+  larvikgaming.restart:
+    description: Gives information about time untill next restart.
+    default: true
   larvikgaming.freetp:
     description: You will not be charged for using /tp commando.
     default: op

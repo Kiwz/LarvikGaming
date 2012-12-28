@@ -1,9 +1,10 @@
 package net.kiwz.larvikgaming;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import net.kiwz.larvikgaming.utils.PlayerGroups;
 import net.kiwz.larvikgaming.utils.StopServer;
-import net.milkbowl.vault.economy.Economy;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -34,7 +35,7 @@ public class Commands implements CommandExecutor {
 			return true;
 		}
 		
-		if (cmd.getName().equalsIgnoreCase("lgrestart") && sender.hasPermission("larvikgaming.restart")) {
+		if (cmd.getName().equalsIgnoreCase("lgstop") && sender.hasPermission("larvikgaming.stop")) {
 			StopServer ss = new StopServer();
 			ss.stopServer();
 			return true;
@@ -55,14 +56,17 @@ public class Commands implements CommandExecutor {
 			return true;
 		}
 		
-		if (cmd.getName().equalsIgnoreCase("restart")) {
-			int restart = larvikGaming.getConfig().getInt("RestartTimeInHours", 6) * 3600000;
-			long time = System.currentTimeMillis() - LarvikGaming.start;
-			long left = restart - time;
-			left = left / 60000;
-			long hour = left / 60;
-			long min = left % 60;
-			sender.sendMessage(color + "[LarvikGaming] Tid til neste restart av serveren: " + hour + " timer, " + min + " minutter.");
+		if (cmd.getName().equalsIgnoreCase("lgrestart") && sender.hasPermission("larvikgaming.restart")) {
+			if (LarvikGaming.start == 0) {
+				sender.sendMessage(color + "[LarvikGaming] Serveren vil ikke restarte automatisk!");
+			}
+			else {
+				DateFormat df = new SimpleDateFormat("HH:mm:ss");
+				int restart = larvikGaming.getConfig().getInt("RestartTimeInHours", 6) * 3600000;
+				long serverStartTime = System.currentTimeMillis() - LarvikGaming.start;
+				long milliSeconds = restart - serverStartTime - 3600000;
+				sender.sendMessage(color + "[LarvikGaming] Neste server restart: " + df.format(new Date(milliSeconds)));
+			}
 			return true;
 		}
 		
@@ -71,8 +75,6 @@ public class Commands implements CommandExecutor {
 			
 			// All testing stuff goes in here:
 			
-			Economy econ = Bukkit.getServer().getServicesManager().getRegistration(Economy.class).getProvider();
-			econ.deleteBank("Tredep");
 			
 			
 			// All testing stuff ends here!
