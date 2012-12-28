@@ -14,9 +14,9 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
 
 public class Schedules {
-	static Server server = Bukkit.getServer();
-	static Plugin larvikGaming = server.getPluginManager().getPlugin("LarvikGaming");
-	static FileConfiguration conf = larvikGaming.getConfig();
+	Server server = Bukkit.getServer();
+	Plugin larvikGaming = server.getPluginManager().getPlugin("LarvikGaming");
+	FileConfiguration conf = larvikGaming.getConfig();
 	int autoWorldSaveTime = conf.getInt("autoWorldSaveInMin", 15) * 1200;
 	int autoMsgTime = conf.getInt("autoMsgDelayInMin", 20) * 1200;
 	int permGroupsRefreshTime = conf.getInt("RefreshGroupInMin", 0) * 1200;
