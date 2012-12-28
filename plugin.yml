@@ -8,7 +8,11 @@ loadbefore: [NoCheatPlus, WorldEdit, Multiverse-Core, Vault, AdminCmd, Craftcono
 
 commands:
   lgtest:
+    description: Just a test-command.
+    aliases: []
     permission: larvikgaming.test
+    permission-message: You do not have <larvikgaming.test> permission!
+    usage: Syntax error! Simply type /<lgtest>.
   lginfo:
     description: Prints out information included commands.
     aliases: [lgi, lg]
@@ -46,6 +50,7 @@ permissions:
       larvikgaming.freetp: true
       larvikgaming.tab.*: true
   larvikgaming.test:
+    description: Just a test-command.
     default: op
   larvikgaming.info:
     description: Prints out information included commands.
