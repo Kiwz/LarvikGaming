@@ -32,9 +32,9 @@ public class LarvikGaming extends JavaPlugin {
 	public void onEnable() {
 		Commands cmds = new Commands();
 		getCommand("lginfo").setExecutor(cmds);
-		getCommand("lgrestart").setExecutor(cmds);
+		getCommand("lgstop").setExecutor(cmds);
 	    getCommand("lggroups").setExecutor(cmds);
-	    getCommand("restart").setExecutor(cmds);
+	    getCommand("lgrestart").setExecutor(cmds);
 	    getCommand("lgtest").setExecutor(cmds);
 	    
 	    ChatListener chat = new ChatListener();

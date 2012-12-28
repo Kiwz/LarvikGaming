@@ -28,10 +28,10 @@ public class Commands implements CommandExecutor {
 			sender.sendMessage(color + "The [" + pdFile.getName() + "] plugin is running version: " + pdFile.getVersion());
 			sender.sendMessage(color + "Here is a list of commands to use:");
 			sender.sendMessage(color + "</lginfo> Shows this information.");
-			sender.sendMessage(color + "</help larvikgaming> Show the help entries.");
-			sender.sendMessage(color + "</lgrestart> Will stop the server!");
+			sender.sendMessage(color + "</help larvikgaming> Will maybe show the help entries.");
+			sender.sendMessage(color + "</lgstop> Will stop the server!");
 			sender.sendMessage(color + "</lggroups> Create a user.txt file that contains groups of players.");
-			sender.sendMessage(color + "</restart> Gives information about time untill next restart.");
+			sender.sendMessage(color + "</lgrestart> Gives information about time untill next restart.");
 			return true;
 		}
 		

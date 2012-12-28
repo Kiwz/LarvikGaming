@@ -48,7 +48,7 @@ public class Schedules {
 				autoMsgLine = am.autoMsgBroadcast(autoMsgLine);
 				autoMsgLine++;
 			}
-		}, 0, 200);//autoMsgTime, autoMsgTime);
+		}, autoMsgTime, autoMsgTime);
 	}
 	
 	private void playerGroups() {
