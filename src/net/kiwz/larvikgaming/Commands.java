@@ -30,7 +30,7 @@ public class Commands implements CommandExecutor {
 			sender.sendMessage(color + "</lginfo> Shows this information.");
 			sender.sendMessage(color + "</help larvikgaming> Will maybe show the help entries.");
 			sender.sendMessage(color + "</lgstop> Will stop the server!");
-			sender.sendMessage(color + "</lggroups> Create a user.txt file that contains groups of players.");
+			sender.sendMessage(color + "</lggroups> Create a perm_groups.txt file that contains groups of players.");
 			sender.sendMessage(color + "</lgrestart> Gives information about time untill next restart.");
 			return true;
 		}
