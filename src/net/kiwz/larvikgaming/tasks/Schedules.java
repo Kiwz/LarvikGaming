@@ -2,6 +2,7 @@ package net.kiwz.larvikgaming.tasks;
 
 import net.kiwz.larvikgaming.LarvikGaming;
 import net.kiwz.larvikgaming.utils.AutoMessage;
+import net.kiwz.larvikgaming.utils.AutoWorldSave;
 import net.kiwz.larvikgaming.utils.OnlinePlayers;
 import net.kiwz.larvikgaming.utils.PlayerGroups;
 import net.kiwz.larvikgaming.utils.StopServer;
@@ -16,13 +17,17 @@ public class Schedules {
 	static Server server = Bukkit.getServer();
 	static Plugin larvikGaming = server.getPluginManager().getPlugin("LarvikGaming");
 	static FileConfiguration conf = larvikGaming.getConfig();
+	int autoWorldSaveTime = conf.getInt("autoWorldSaveInMin", 15) * 1200;
 	int autoMsgTime = conf.getInt("autoMsgDelayInMin", 20) * 1200;
-	int permGroupsRefreshTime = conf.getInt("RefreshGroupInMin", 10) * 1200;
-	int onlinePlayersLogTime = conf.getInt("TimeBetweenOnlinePlayersLog", 10) * 1200;
+	int permGroupsRefreshTime = conf.getInt("RefreshGroupInMin", 0) * 1200;
+	int onlinePlayersLogTime = conf.getInt("TimeBetweenOnlinePlayersLog", 15) * 1200;
 	int restartTime = conf.getInt("RestartTimeInHours", 6) * 72000;
 	int autoMsgLine = 0;
 	
 	public void allSchedules() {
+		if (autoWorldSaveTime > 0) {
+			autoWorldSave();
+		}
 		if (autoMsgTime > 0) {
 			autoMsg();
 		}
@@ -40,6 +45,16 @@ public class Schedules {
 		}
 	}
 	
+	private void autoWorldSave() {
+		larvikGaming.getServer().getScheduler().scheduleSyncRepeatingTask(larvikGaming, new Runnable() {
+			@Override
+			public void run() {
+				AutoWorldSave aw = new AutoWorldSave();
+				aw.autoSave();
+			}
+		}, autoWorldSaveTime - 100, autoWorldSaveTime);
+	}
+	
 	private void autoMsg() {
 		larvikGaming.getServer().getScheduler().scheduleSyncRepeatingTask(larvikGaming, new Runnable() {
 			@Override
@@ -48,7 +63,7 @@ public class Schedules {
 				autoMsgLine = am.autoMsgBroadcast(autoMsgLine);
 				autoMsgLine++;
 			}
-		}, autoMsgTime, autoMsgTime);
+		}, autoMsgTime + 200, autoMsgTime);
 	}
 	
 	private void playerGroups() {
@@ -78,7 +93,7 @@ public class Schedules {
 				StopServer ss = new StopServer();
 				ss.stopServer();
 			}
-		}, restartTime);
+		}, restartTime + 60);
 	}
 	
 	private void stopServerMessage5() {

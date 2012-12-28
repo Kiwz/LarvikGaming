@@ -1,7 +1,8 @@
 TeleportCharge: 30
-autoMsgDelayInMin: 15
+autoMsgDelayInMin: 20
 autoMsgToConsole: false
 autoMsgPrefix: '&d[Viktig Beskjed] '
+autoWorldSaveInMin: 15
 RestartTimeInHours: 6
 FileDir: plugins/LarvikGaming/files
 TimeBetweenOnlinePlayersLog: 15
