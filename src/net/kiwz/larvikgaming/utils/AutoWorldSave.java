@@ -17,15 +17,15 @@ public class AutoWorldSave {
 		long startTime = System.currentTimeMillis();
 		
 		Bukkit.savePlayers();
-		for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+		/*for (Player p : Bukkit.getServer().getOnlinePlayers()) {
 			p.sendMessage(ChatColor.GOLD + LarvikGaming.name + "Spillere lagret!");
-		}
+		}*/
 		
 		for (World world : Bukkit.getWorlds()) {
 			world.save();
-			for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+			/*for (Player p : Bukkit.getServer().getOnlinePlayers()) {
 				p.sendMessage(ChatColor.GOLD + LarvikGaming.name + world.getName() + " lagret!");
-			}
+			}*/
 		}
 		long elapsedTime = System.currentTimeMillis() - startTime;
 		Bukkit.broadcastMessage(ChatColor.DARK_GREEN + LarvikGaming.name + "Auto-lagring fullført på: " + elapsedTime + "ms.");
