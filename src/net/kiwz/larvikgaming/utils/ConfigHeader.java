@@ -21,7 +21,7 @@ public class ConfigHeader {
 		String s112 = "autoWorldSaveInMin = How many minutes between each time we save all worlds and inventoryes. 0 to disable this feature." + n;
 		String s12 = "RestartTimeInHours = Time in hours between each server restart, remember to make a loop in your 'start.bat' file as this will just stop the server! 0 to disable this feature." + n;
 		String s13 = "FileDir = Where you want this plugin to store all the files it handles. I.e. 'C:/whatever/you/like'." + n;
-		String s14 = "TimeBetweenOnlinePlayersLog = Time in minutes between each time to log how many players are online. 0 to disable this." + n;
+		String s14 = "TimeBetweenOnlinePlayersLog = Time in minutes between each time to log how many players are online. 0 to disable this. Use numbers between 0 to 60 where the number can be devided by 60!" + n;
 		String s19 = "LogGetGroupTime = If 'true' it will log the time it takes to generate the 'perm_groups.txt' file from bPermissions." + n;
 		String s20 = "RefreshGroupInMin = How many minutes between each time the 'perm_groups.txt' file will be uppdated.  0 to disable this feature. Set to 0 if you do not have bPermissions!" + n;
 		String s21 = "WorldToGetGroupFrom = I am sorry to tell that this is not a multiworld plugin, so choose what world you want to get groups from." + n;

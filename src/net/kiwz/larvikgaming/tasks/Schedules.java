@@ -20,7 +20,7 @@ public class Schedules {
 	int autoWorldSaveTime = conf.getInt("autoWorldSaveInMin", 15) * 1200;
 	int autoMsgTime = conf.getInt("autoMsgDelayInMin", 20) * 1200;
 	int permGroupsRefreshTime = conf.getInt("RefreshGroupInMin", 0) * 1200;
-	int onlinePlayersLogTime = conf.getInt("TimeBetweenOnlinePlayersLog", 15) * 1200;
+	int onlinePlayersLogTime = conf.getInt("TimeBetweenOnlinePlayersLog", 15) * 60000;
 	int restartTime = conf.getInt("RestartTimeInHours", 6) * 72000;
 	int autoMsgLine = 0;
 	
@@ -81,9 +81,9 @@ public class Schedules {
 			@Override
 			public void run() {
 				OnlinePlayers op = new OnlinePlayers();
-				op.makeFile();
+				op.onlinePlayers();
 			}
-		}, onlinePlayersLogTime - 600, onlinePlayersLogTime);
+		}, 1200, 500);
 	}
 	
 	private void stopServer() {
