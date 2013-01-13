@@ -20,7 +20,7 @@ public class Schedules {
 	int autoWorldSaveTime = conf.getInt("autoWorldSaveInMin", 15) * 1200;
 	int autoMsgTime = conf.getInt("autoMsgDelayInMin", 20) * 1200;
 	int permGroupsRefreshTime = conf.getInt("RefreshGroupInMin", 0) * 1200;
-	int onlinePlayersLogTime = conf.getInt("TimeBetweenOnlinePlayersLog", 15) * 60000;
+	int onlinePlayersLogTime = conf.getInt("TimeBetweenOnlinePlayersLog", 15);
 	int restartTime = conf.getInt("RestartTimeInHours", 6) * 72000;
 	int autoMsgLine = 0;
 	long lastMillis = 0;
@@ -84,7 +84,7 @@ public class Schedules {
 				OnlinePlayers op = new OnlinePlayers();
 				lastMillis = op.logOnlinePlayers(lastMillis);
 			}
-		}, 100, 100);
+		}, 600, 500);
 	}
 	
 	private void stopServer() {
@@ -94,7 +94,7 @@ public class Schedules {
 				StopServer ss = new StopServer();
 				ss.stopServer();
 			}
-		}, restartTime + 60);
+		}, restartTime + 1200);
 	}
 	
 	private void stopServerMessage5() {
@@ -103,7 +103,7 @@ public class Schedules {
 			public void run() {
 				server.broadcastMessage(ChatColor.DARK_PURPLE + "**Server-Restart in 5min**");
 			}
-		}, restartTime - 6000);
+		}, restartTime - 4800);
 	}
 	
 	private void stopServerMessage1() {
@@ -112,7 +112,7 @@ public class Schedules {
 			public void run() {
 				server.broadcastMessage(ChatColor.DARK_PURPLE + "**Server-Restart in 1min**");
 			}
-		}, restartTime - 1200);
+		}, restartTime - 20);
 	}
 	
 	private void serverStartTime() {

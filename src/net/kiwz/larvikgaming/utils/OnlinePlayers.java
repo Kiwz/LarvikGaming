@@ -33,11 +33,9 @@ public class OnlinePlayers {
 	    	
         	String time = sdf.format(new Date());
         	long currentMillis = System.currentTimeMillis() / 60000;
-	        if (Integer.parseInt(time) % onlinePlayersLogTime == 0) {
-	        	if (lastMillis != currentMillis) {
-	        		makeFile();
-	        		lastMillis = currentMillis;
-	        	}
+	        if (Integer.parseInt(time) % onlinePlayersLogTime == 0 && lastMillis != currentMillis) {
+        		makeFile();
+        		lastMillis = currentMillis;
 	        }
 		}
 		else {
@@ -46,7 +44,7 @@ public class OnlinePlayers {
 		return lastMillis;
 	}
 	
-	public void makeFile() {
+	private void makeFile() {
 		String dir = conf.getString("FileDir", "plugins/LarvikGaming/files") + "/misc/";
 		Format  sdf = new SimpleDateFormat(conf.getString("TimeFormat", "yyyy-MM-dd HH:mm:ss"));
 		String date = sdf.format(new Date());
@@ -62,7 +60,7 @@ public class OnlinePlayers {
 		}
 	}
 	
-	public int getPlayers() {
+	private int getPlayers() {
 		int players = Bukkit.getServer().getOnlinePlayers().length;
 		return players;
 	}
