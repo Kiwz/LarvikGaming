@@ -23,6 +23,7 @@ public class Schedules {
 	int onlinePlayersLogTime = conf.getInt("TimeBetweenOnlinePlayersLog", 15) * 60000;
 	int restartTime = conf.getInt("RestartTimeInHours", 6) * 72000;
 	int autoMsgLine = 0;
+	long lastMillis = 0;
 	
 	public void allSchedules() {
 		if (autoWorldSaveTime > 0) {
@@ -81,9 +82,9 @@ public class Schedules {
 			@Override
 			public void run() {
 				OnlinePlayers op = new OnlinePlayers();
-				op.onlinePlayers();
+				lastMillis = op.logOnlinePlayers(lastMillis);
 			}
-		}, 1200, 500);
+		}, 100, 100);
 	}
 	
 	private void stopServer() {

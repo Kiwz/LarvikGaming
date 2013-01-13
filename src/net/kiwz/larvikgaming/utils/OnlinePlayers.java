@@ -20,48 +20,49 @@ public class OnlinePlayers {
 	Server server = Bukkit.getServer();
 	Plugin larvikGaming = server.getPluginManager().getPlugin("LarvikGaming");
 	FileConfiguration conf = larvikGaming.getConfig();
-	int onlinePlayersLogTime = conf.getInt("TimeBetweenOnlinePlayersLog", 15);
 	
-	public void onlinePlayers() {
-    	long lastMillis = 0;
-    	Format  sdf = new SimpleDateFormat("m");
+	public long logOnlinePlayers(long lastMillis) {
+		int onlinePlayersLogTime = conf.getInt("TimeBetweenOnlinePlayersLog", 15);
+    	Format sdf = new SimpleDateFormat("mm");
+    	
 		if (60 % onlinePlayersLogTime == 0) {
+			
 	    	if (onlinePlayersLogTime > 59) {
 	    		onlinePlayersLogTime = 0;
 	    	}
 	    	
-	    	while (true) {
-	        	int time = Integer.parseInt(sdf.format(new Date()));
-	        	long currentMillis = System.currentTimeMillis() / 60000;
-		        if (time % onlinePlayersLogTime == 0) {
-		        	if (lastMillis != currentMillis) {
-		        		makeFile();
-		        		lastMillis = currentMillis;
-		        	}
-		        }
-	    	}
+        	String time = sdf.format(new Date());
+        	long currentMillis = System.currentTimeMillis() / 60000;
+	        if (Integer.parseInt(time) % onlinePlayersLogTime == 0) {
+	        	if (lastMillis != currentMillis) {
+	        		makeFile();
+	        		lastMillis = currentMillis;
+	        	}
+	        }
 		}
 		else {
 			log.warning(LarvikGaming.name + "TimeBetweenOnlinePlayersLog is not a valid number! Disabled!");
 		}
+		return lastMillis;
 	}
 	
-	private void makeFile() {
-		Plugin larvikGaming = Bukkit.getServer().getPluginManager().getPlugin("LarvikGaming");
-		String dir = larvikGaming.getConfig().getString("FileDir", "plugins/LarvikGaming/files") + "/misc/";
-		Format  sdf = new SimpleDateFormat(larvikGaming.getConfig().getString("TimeFormat", "yyyy-MM-dd HH:mm:ss"));
+	public void makeFile() {
+		String dir = conf.getString("FileDir", "plugins/LarvikGaming/files") + "/misc/";
+		Format  sdf = new SimpleDateFormat(conf.getString("TimeFormat", "yyyy-MM-dd HH:mm:ss"));
 		String date = sdf.format(new Date());
 		File outFile = new File(dir + "player_traffic.txt");
 		FileWriter pw = null;
+		
 		try {
 			pw = new FileWriter(outFile, true);
 			pw.write(date + " " + getPlayers() + "\n");
 			pw.close();
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 		}
 	}
 	
-	private int getPlayers() {
+	public int getPlayers() {
 		int players = Bukkit.getServer().getOnlinePlayers().length;
 		return players;
 	}
