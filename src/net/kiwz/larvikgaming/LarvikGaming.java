@@ -48,7 +48,7 @@ public class LarvikGaming extends JavaPlugin {
 	    
 	    Schedules sche = new Schedules();
 	    sche.allSchedules();
-	    
+
 		log.info(name + "ENABLED!");
 	}
 

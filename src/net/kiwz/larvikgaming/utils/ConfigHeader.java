@@ -30,15 +30,14 @@ public class ConfigHeader {
 		String s24 = "CmdToLog = A list of all the commands you want to log to 'cmd_log.txt'." + n;
 		String s26 = "PrivMsgToLog = A list of all the commands your players use to whisper, this will be logged to 'msg_log.txt'." + n;
 		String s27 = "Chat = If 'true' it will log the chat from your players to 'chat_log.txt'." + n;
-		String s28 = "Full-Logger = If 'true' it will log everything to 'full_log.txt'" + n;
-		String s29 = "Fine-Logger = If 'true' it will log all finest, finer and fine levels to 'fine_log.txt' (theese levels are almost never in use)" + n;
+		String s28 = "Full-Logger = If 'true' it will log info, warning and severe levels to 'log.txt'" + n;
 		String s30 = "Info-Logger = If 'true' it will log all info levels to 'info_log.txt'" + n;
 		String s31 = "Warning-Logger = If 'true' it will log all warning levels to 'warning_log.txt'" + n;
 		String s32 = "Severe-Logger = If 'true' it will log all severe levels to 'severe_log.txt'" + n;
 		
 		String header = s01 + s02 + s03 + s04 + s05 + s06 + s08 + s082 + s083 + s09 + s10 +
 				s11 + s112 + s12 + s13 + s14 + s19 + s20 +
-				s21 + s22 + s23 + s24 + s26 + s27 + s28 + s29 + s30 +
+				s21 + s22 + s23 + s24 + s26 + s27 + s28 + s30 +
 				s31 + s32;
 		
 		return header;

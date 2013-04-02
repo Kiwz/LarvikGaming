@@ -3,7 +3,7 @@ package net.kiwz.larvikgaming.logs;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.FileHandler;
-import java.util.logging.Handler;
+//import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,27 +18,21 @@ public class LogHandlers {
 	private static String folderToSave = larvikGaming.getConfig().getString("FileDir", "plugins/LarvikGaming/files") + "/";
 	private static String logFolder = folderToSave + "logs/";
 	private static String log_file = logFolder + "log.txt";
-	private static String fine_file = logFolder + "fine_log.txt";
 	private static String info_file = logFolder + "info_log.txt";
 	private static String warning_file = logFolder + "warning_log.txt";
 	private static String severe_file = logFolder + "severe_log.txt";
 
 	public static void log() {
 		boolean full = larvikGaming.getConfig().getBoolean("Full-Logger", true);
-		boolean fine = larvikGaming.getConfig().getBoolean("Fine-Logger", false);
 		boolean info = larvikGaming.getConfig().getBoolean("Info-Logger", false);
 		boolean warning = larvikGaming.getConfig().getBoolean("Warning-Logger", true);
 		boolean severe = larvikGaming.getConfig().getBoolean("Severe-Logger", true);
 		File log_lck = new File(log_file + ".lck");
-		File fine_lck = new File(fine_file + ".lck");
 		File info_lck = new File(info_file + ".lck");
 		File warning_lck = new File(warning_file + ".lck");
 		File severe_lck = new File(severe_file + ".lck");
 		if (log_lck.exists()) {
 			log_lck.delete();
-		}
-		if (fine_lck.exists()) {
-			fine_lck.delete();
 		}
 		if (info_lck.exists()) {
 			info_lck.delete();
@@ -51,12 +45,10 @@ public class LogHandlers {
 		}
 		
 		log.setLevel(Level.ALL);
-		Handler[] mcHandler = log.getHandlers();
-		mcHandler[1].setLevel(Level.INFO);
+		//Handler[] mcHandler = log.getHandlers();
+		//mcHandler[0].setLevel(Level.INFO);
 		if (full)
 			full();
-		if (fine)
-			fine();
 		if (info)
 			info();
 		if (warning)
@@ -75,18 +67,6 @@ public class LogHandlers {
 		global.addHandler(fullHandler);
 		fullHandler.setLevel(Level.ALL);
 		fullHandler.setFormatter(new FullFormatter());
-	}
-	
-	private static void fine() {
-		FileHandler fineHandler = null;
-		try {
-			fineHandler = new FileHandler(fine_file, true);
-		} catch (IOException e) {
-		}
-		log.addHandler(fineHandler);
-		global.addHandler(fineHandler);
-		fineHandler.setLevel(Level.FINEST);
-		fineHandler.setFormatter(new FineFormatter());
 	}
 	
 	private static void info() {

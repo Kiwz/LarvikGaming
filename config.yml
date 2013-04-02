@@ -24,7 +24,6 @@ PrivMsgToLog:
 - /r
 Chat: true
 Full-Logger: true
-Fine-Logger: false
 Info-Logger: false
 Warning-Logger: true
 Severe-Logger: true
